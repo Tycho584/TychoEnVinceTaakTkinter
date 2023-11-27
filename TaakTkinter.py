@@ -4,13 +4,25 @@ from tkinter import ttk
 
 root = tk.Tk()
 
-basisURL = "https://api.frankfurter.app/2023-01-01..2023-11-22"
+baseURL = "https://api.frankfurter.app/2023-01-01..2023-11-22"
 
 def specificDate():
     pass
 
-def excangeCurrency():
+def specificTimePeriod():
     pass
+
+def excangeCurrency():
+    baseURL = "https://api.frankfurter.app/"
+
+    comingFromCurrency = fromCurrency
+    goingToCurrency = toCurrency
+
+    comingFromCurrencyAmount = fromCurrencyAmount.get()
+
+    URL = 
+
+
 
 def latestInformation():
     pass
@@ -45,7 +57,7 @@ toCurrency = tk.OptionMenu(tab1, toValueInside, *currencies)
 fromCurrencyAmount = tk.Entry(tab1)
 toCurrencyAmount = tk.Entry(tab1)
 
-exchangeButton = tk.Button(tab1, text="Click here to exchange the currency", command=specificDate)
+exchangeButton = tk.Button(tab1, text="Click here to exchange the currency", command=excangeCurrency)
 
 
 welcomeLabel.grid(row=1, column=0, columnspan=6)
@@ -58,7 +70,5 @@ fromCurrencyAmount.grid(row=3, column=2)
 toCurrencyAmount.grid(row=3, column=3)
 
 exchangeButton.grid(row=4, column=2, columnspan=2)
-
-
 
 root.mainloop()
