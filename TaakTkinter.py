@@ -1,34 +1,66 @@
 import tkinter as tk
-import requests
 from tkinter import ttk
+import requests
 
 root = tk.Tk()
 
 baseURL = "https://api.frankfurter.app/2023-01-01..2023-11-22"
 
 def specificDate():
-    pass
+    baseURL = "https://api.frankfurter.app/"
+
+    date = "Enter your start date here"
+
+    URL = baseURL + f"{date}"
+
+    getFileContentSpecificDate = requests.get(URL)
+    getFileContentSpecificDateJson = getFileContentSpecificDate.json()
 
 def specificTimePeriod():
-    pass
+    baseURL = "https://api.frankfurter.app/"
+
+    startDate = "Enter your start date here"
+    endDate = "Enter your end date here"
+
+    URL = baseURL + f"{startDate}..{endDate}"
+
+    getFileContentSpecificTimePeriod = requests.get(URL)
+    getFileContentSpecificTimePeriodJson = getFileContentSpecificTimePeriod.json()
 
 def excangeCurrency():
     baseURL = "https://api.frankfurter.app/"
 
-    comingFromCurrency = fromCurrency
-    goingToCurrency = toCurrency
+    comingFromCurrency = fromValueInside.get()
+    goingToCurrency = toValueInside.get()
 
     comingFromCurrencyAmount = fromCurrencyAmount.get()
 
-    URL = 
+    URL = baseURL+f"latest?from={comingFromCurrency}&to={goingToCurrency}&amount={comingFromCurrencyAmount}"
+
+    getFileContent = requests.get(URL)
+    getFileContentJson = getFileContent.json()
+    print(URL)
+    print(getFileContentJson)
+
+    toCurrencyAmount.insert(0,str(getFileContentJson["rates"][goingToCurrency]))
 
 
 
 def latestInformation():
-    pass
+    URL = "https://api.frankfurter.app/latest"
+
+    getFileContentLatestInformation = requests.get(URL)
+    getFileContentLatestInformationJson = getFileContentLatestInformation.json()
+
+    print(getFileContentLatestInformationJson)
 
 def showAvailableCurrencies():
-    pass
+    URL = "https://api.frankfurter.app/currencies"
+
+    getFileContentAvailableCurrencies = requests.get(URL)
+    getFileContentAvailableCurrenciesJson = getFileContentAvailableCurrencies.json()
+
+    print(getFileContentAvailableCurrenciesJson)
 
 root.title("Currency Excanger")
 root.geometry("500x500")
@@ -43,13 +75,13 @@ tabBar.add(tab1, text="From - To")
 tabBar.add(tab2, text="Specific date")
 
 
-currencies = ["USD", "JPY", "BGN"]
+currencies = ["USD", "JPY", "GBP"]
 
 fromValueInside = tk.StringVar(tab1)
 toValueInside = tk.StringVar(tab1)
 
 welcomeLabel = tk.Label(tab1, text="Welcome to the tkinter assignment of Tycho & Vince")
-fromToWelcomeLabel = tk.Label(tab1, text="In this tab you can vieuw the excange rate for diffrent currencies.")
+fromToWelcomeLabel = tk.Label(tab1, text="In this tab you can view the excange rate for diffrent currencies.")
 
 fromCurrency = tk.OptionMenu(tab1,fromValueInside, *currencies)
 toCurrency = tk.OptionMenu(tab1, toValueInside, *currencies)
