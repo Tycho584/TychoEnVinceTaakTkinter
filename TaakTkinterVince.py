@@ -47,8 +47,8 @@ def showAvailableCurrencies():
 
 root.title("Currency Excanger")
 # root.geometry("500x500")
-root.grid_columnconfigure(0, weight=1)
-root.grid_rowconfigure(0, weight=1)
+# root.grid_columnconfigure(0, weight=1)
+# root.grid_rowconfigure(0, weight=1)
 
 tabBar = ttk.Notebook(root)
 tabBar.grid(row=0,column=0)
