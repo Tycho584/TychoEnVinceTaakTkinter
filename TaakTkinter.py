@@ -114,6 +114,12 @@ tabBar.grid(row=0,column=0)
 
 tab1 = ttk.Frame(tabBar)
 tab2 = ttk.Frame(tabBar)
+
+subtab1 = ttk.Frame(tab1)
+subtab1.pack()
+subtab2 = ttk.Frame(tab2)
+subtab2.pack()
+
 tab3 = ttk.Frame(tabBar)
 tab4 = ttk.Frame(tabBar)
 
@@ -128,25 +134,25 @@ currencies = ['AUD','BGN','BRL','CAD','CHF', 'CNY', 'CZK', 'DKK', 'EUR', 'GBP', 
 
 ###################################################################################################################################################################################################################
 
-fromValueInside = tk.StringVar(tab1)
-toValueInside = tk.StringVar(tab1)
+fromValueInside = tk.StringVar(subtab1)
+toValueInside = tk.StringVar(subtab1)
 
-welcomeLabel = tk.Label(tab1, text="Welcome to the tkinter assignment of Tycho & Vince")
-fromToWelcomeLabel = tk.Label(tab1, text="In this tab you can view the excange rate for diffrent currencies.")
+welcomeLabel = tk.Label(subtab1, text="Welcome to the tkinter assignment of Tycho & Vince")
+fromToWelcomeLabel = tk.Label(subtab1, text="In this tab you can view the excange rate for diffrent currencies.")
 
-fromFullCurrencyNameLabel = tk.Label(tab1, text="",)
-toFullCurrencyNameLabel = tk.Label(tab1, text="")
+fromFullCurrencyNameLabel = tk.Label(subtab1, text="",)
+toFullCurrencyNameLabel = tk.Label(subtab1, text="")
 
-fromCurrency = tk.OptionMenu(tab1,fromValueInside, *currencies)
-toCurrency = tk.OptionMenu(tab1, toValueInside, *currencies)
+fromCurrency = tk.OptionMenu(subtab1,fromValueInside, *currencies)
+toCurrency = tk.OptionMenu(subtab1, toValueInside, *currencies)
 
-fromCurrencyAmount = tk.Entry(tab1)
-EqualsSignLabel = tk.Label(tab1, text="=")
-toCurrencyAmount = tk.Entry(tab1)
+fromCurrencyAmount = tk.Entry(subtab1)
+EqualsSignLabel = tk.Label(subtab1, text="=")
+toCurrencyAmount = tk.Entry(subtab1)
 
-noNumbersGivvenInAmountLabel = tk.Label(tab1,text="")
+noNumbersGivvenInAmountLabel = tk.Label(subtab1,text="")
 
-exchangeButton = tk.Button(tab1, text="Click here to exchange the currency", command=excangeCurrency)
+exchangeButton = tk.Button(subtab1, text="Click here to exchange the currency", command=excangeCurrency)
 
 
 welcomeLabel.grid(row=0, column=0, columnspan=6)
@@ -168,24 +174,24 @@ noNumbersGivvenInAmountLabel.grid(row=5,column=0,columnspan=6)
 
 ###################################################################################################################################################################################################################
 
-fromValueInsideSpecificDate = tk.StringVar(tab2)
-toValueInsideSpecificDate = tk.StringVar(tab2)
+fromValueInsideSpecificDate = tk.StringVar(subtab2)
+toValueInsideSpecificDate = tk.StringVar(subtab2)
 
-welcomeLabelSpecificDate = tk.Label(tab2, text="Welcome to the tkinter assignment of Tycho & Vince")
-fromToWelcomeLabelSpecificDate = tk.Label(tab2, text="In this tab you can view the excange rate for diffrent currencies at a specific date. (The base currency is EUR: You cannot change this)")
+welcomeLabelSpecificDate = tk.Label(subtab2, text="Welcome to the tkinter assignment of Tycho & Vince")
+fromToWelcomeLabelSpecificDate = tk.Label(subtab2, text="In this tab you can view the excange rate for diffrent currencies at a specific date. (The base currency is EUR: You cannot change this)")
 
-tekiezen_einddatum_label = tk.Label(tab2, text="Voltooiingsdatum")
-einddatum_dateentry = CustomDateEntry(tab2, width= 16, background= "black", foreground= "white",bd=2)
+tekiezen_einddatum_label = tk.Label(subtab2, text="Voltooiingsdatum")
+einddatum_dateentry = CustomDateEntry(subtab2, width= 16, background= "black", foreground= "white",bd=2)
 einddatum_dateentry.set_date(datetime.datetime.now().strftime("%d-%m-%Y"))
 
-fromCurrencySpecificDate = tk.OptionMenu(tab2,fromValueInsideSpecificDate, *currencies)
-MidTextSpecificDate = tk.Label(tab2, text= "=")
-toCurrencySpecificDate = tk.OptionMenu(tab2, toValueInsideSpecificDate, *currencies)
+fromCurrencySpecificDate = tk.OptionMenu(subtab2,fromValueInsideSpecificDate, *currencies)
+MidTextSpecificDate = tk.Label(subtab2, text= "=")
+toCurrencySpecificDate = tk.OptionMenu(subtab2, toValueInsideSpecificDate, *currencies)
 
-fromCurrencyAmountSpecificDate = tk.Entry(tab2)
-toCurrencyAmountSpecificDate = tk.Entry(tab2)
+fromCurrencyAmountSpecificDate = tk.Entry(subtab2)
+toCurrencyAmountSpecificDate = tk.Entry(subtab2)
 
-exchangeButtonSpecificDate = tk.Button(tab2, text="Click here to exchange the currency", command=specificDate)
+exchangeButtonSpecificDate = tk.Button(subtab2, text="Click here to exchange the currency", command=specificDate)
 
 welcomeLabelSpecificDate.grid(row=1, column=0, columnspan=6)
 fromToWelcomeLabelSpecificDate.grid(row=2, column=0, columnspan=6)
