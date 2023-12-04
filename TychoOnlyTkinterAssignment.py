@@ -43,7 +43,7 @@ def excangeCurrency():
     print(getFileContentJson)
 
     toCurrencyAmount.insert(0,str(getFileContentJson["rates"][goingToCurrency]))
-w1
+
 def latestInformation():
     URL = "https://api.frankfurter.app/latest"
 
