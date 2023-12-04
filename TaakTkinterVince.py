@@ -20,6 +20,7 @@ class CustomDateEntry(DateEntry):
         if 'readonly' not in self.state():
             self.focus_set()
 
+
 def specificDate():
     pass
 
@@ -45,13 +46,19 @@ def showAvailableCurrencies():
     pass
 
 root.title("Currency Excanger")
-root.geometry("500x500")
+# root.geometry("500x500")
+root.grid_columnconfigure(0, weight=1)
+root.grid_rowconfigure(0, weight=1)
 
 tabBar = ttk.Notebook(root)
 tabBar.grid(row=0,column=0)
 
 tab1 = ttk.Frame(tabBar)
+subtab1 = ttk.Frame(tab1)
+subtab1.pack()
 tab2 = ttk.Frame(tabBar)
+subtab2 = ttk.Frame(tab2)
+subtab2.pack()
 
 tabBar.add(tab1, text="From - To")
 tabBar.add(tab2, text="Specific date")
@@ -59,31 +66,31 @@ tabBar.add(tab2, text="Specific date")
 
 currencies = ["USD", "JPY", "BGN"]
 
-fromValueInside = tk.StringVar(tab1)
-toValueInside = tk.StringVar(tab1)
+fromValueInside = tk.StringVar(subtab1)
+toValueInside = tk.StringVar(subtab1)
 
-welcomeLabel = tk.Label(tab1, text="Welcome to the tkinter assignment of Tycho & Vince")
-fromToWelcomeLabel = tk.Label(tab1, text="In this tab you can view the excange rate for diffrent currencies.")
+welcomeLabel = tk.Label(subtab1, text="Welcome to the tkinter assignment of Tycho & Vince")
+fromToWelcomeLabel = tk.Label(subtab1, text="In this tab you can view the excange rate for diffrent currencies.")
 
-fromCurrency = tk.OptionMenu(tab1,fromValueInside, *currencies)
-toCurrency = tk.OptionMenu(tab1, toValueInside, *currencies)
+fromCurrency = tk.OptionMenu(subtab1,fromValueInside, *currencies)
+toCurrency = tk.OptionMenu(subtab1, toValueInside, *currencies)
+MidText = tk.Label(subtab1, text= "=")
+fromCurrencyAmount = tk.Entry(subtab1)
+toCurrencyAmount = tk.Entry(subtab1)
 
-fromCurrencyAmount = tk.Entry(tab1)
-toCurrencyAmount = tk.Entry(tab1)
-
-exchangeButton = tk.Button(tab1, text="Click here to exchange the currency", command=excangeCurrency)
+exchangeButton = tk.Button(subtab1, text="Click here to exchange the currency", command=excangeCurrency)
 
 
 welcomeLabel.grid(row=1, column=0, columnspan=6)
 fromToWelcomeLabel.grid(row=2, column=0, columnspan=6)
 
-fromCurrency.grid(row=3, column=0, columnspan=2)
-toCurrency.grid(row=3, column=4, columnspan=2)
+fromCurrency.grid(row=5, column=0, columnspan=2)
+fromCurrencyAmount.grid(row=5, column=2)
+MidText.grid(row=5, column=3)
+toCurrencyAmount.grid(row=5, column=4)
+toCurrency.grid(row=5, column=5, columnspan=2)
 
-fromCurrencyAmount.grid(row=3, column=2)
-toCurrencyAmount.grid(row=3, column=3)
-
-exchangeButton.grid(row=4, column=2, columnspan=2)
+exchangeButton.grid(row=6, column=0, columnspan=6)
 
 tabBar.add(tab1, text="From - To")
 tabBar.add(tab2, text="Specific date")
@@ -91,24 +98,24 @@ tabBar.add(tab2, text="Specific date")
 
 currencies = ["USD", "JPY", "BGN"]
 
-fromValueInside = tk.StringVar(tab2)
-toValueInside = tk.StringVar(tab2)
+fromValueInside = tk.StringVar(subtab2)
+toValueInside = tk.StringVar(subtab2)
 
-welcomeLabel = tk.Label(tab2, text="Welcome to the tkinter assignment of Tycho & Vince")
-fromToWelcomeLabel = tk.Label(tab2, text="In this tab you can view the excange rate for diffrent currencies at a specific date.")
+welcomeLabel = tk.Label(subtab2, text="Welcome to the tkinter assignment of Tycho & Vince")
+fromToWelcomeLabel = tk.Label(subtab2, text="In this tab you can view the excange rate for diffrent currencies at a specific date.")
 
-tekiezen_einddatum_label = tk.Label(tab2, text="Voltooiingsdatum")
-einddatum_dateentry = CustomDateEntry(tab2, width= 16, background= "black", foreground= "white",bd=2)
+tekiezen_einddatum_label = tk.Label(subtab2, text="Voltooiingsdatum")
+einddatum_dateentry = CustomDateEntry(subtab2, width= 16, background= "black", foreground= "white",bd=2)
 einddatum_dateentry.set_date(datetime.datetime.now().strftime("%d-%m-%Y"))
 
-fromCurrency = tk.OptionMenu(tab2,fromValueInside, *currencies)
-MidText = tk.Label(tab2, text= "=")
-toCurrency = tk.OptionMenu(tab2, toValueInside, *currencies)
+fromCurrency = tk.OptionMenu(subtab2,fromValueInside, *currencies)
+MidText = tk.Label(subtab2, text= "=")
+toCurrency = tk.OptionMenu(subtab2, toValueInside, *currencies)
 
-fromCurrencyAmount = tk.Entry(tab2)
-toCurrencyAmount = tk.Entry(tab2)
+fromCurrencyAmount = tk.Entry(subtab2)
+toCurrencyAmount = tk.Entry(subtab2)
 
-exchangeButton = tk.Button(tab2, text="Click here to exchange the currency", command=excangeCurrency)
+exchangeButton = tk.Button(subtab2, text="Click here to exchange the currency", command=excangeCurrency)
 
 welcomeLabel.grid(row=1, column=0, columnspan=6)
 fromToWelcomeLabel.grid(row=2, column=0, columnspan=6)
