@@ -1,3 +1,10 @@
+"""Deze code maakt een app met behulp van Tkinter, het doel van de app is geld omwissel terieven te laten zien door middel van de
+frankfurter API (https://www.frankfurter.app/docs/) We hebben het onderverdeeld in 2 tabs.In het eerste tab kunt u een munteenheid
+kiezen en een hoeveelheid ingeven als u vervolgens op de knop duwt dan vormt deze het om naar de ander gekozen munteenheid. Op het tweede tab 
+kunt u de tariven van een specifieke datum bekijken hier is de basis munteenheid Euro en u kunt omvormen naar 2 ander munteenheden,
+u kunt elke datum van af 1980 tot nu bekijken (als u naar de toekomst gaat dan pakt de api de meest recente waardes). Meestal update de api
+de tarieven dagelijks maar soms dan duurt het wat langer."""
+
 import tkinter as tk
 from tkinter import ttk
 import requests, datetime
@@ -100,7 +107,7 @@ class CustomDateEntry(DateEntry):
 ###################################################################################################################################################################################################
 
 root.title("Currency Excanger")
-root.geometry("1000x650")
+root.geometry("730x200")
 
 tabBar = ttk.Notebook(root)
 tabBar.grid(row=0,column=0)
